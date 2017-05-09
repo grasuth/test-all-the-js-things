@@ -62,7 +62,5 @@ describe('Built-in objects', function() {
         it('null exactly equals null', function() {
             expect(null).toBe(null);
         });
-        
-        
     });
 });
