@@ -1,5 +1,19 @@
+function a() {
+   return this;
+} 
+
 describe('Fundamental objects', function(){
    describe('Object', function() {
+      var that = this;
+      var thing = {thing: 1}; 
+      
+      it('this is from closure', function() {
+         expect(this).toEqual(that);
+      });
+      
+      it('this can be set with call', function() {
+         expect(a.call(thing)).toEqual(thing);
+      });
        
    });
    

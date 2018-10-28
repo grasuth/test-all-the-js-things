@@ -24,14 +24,39 @@ describe('Global functions', function() {
        });
    });
    
-   describe('isNaN', function() {
+   describe('isNaN()', function() {
       it('returns true for NaN', function() {
           expect(isNaN(NaN)).toBe(true);
-      }) 
-       
+          expect(isNaN(Number.Nan)).toBe(true);
+      }); 
+      
+      it('returns false for numbers', function() {
+          expect(isNaN(1)).toBe(false);
+          expect(isNaN(1.234)).toBe(false);
+      });
+      
+      it('returns false for infinity', function() {
+          expect(isNaN(Infinity)).toBe(false);
+          
+      });
    });
    
-   describe('parseFloat', function() {
+   describe('parseFloat()', function() {
+      it('parses float strings', function() {
+         expect(parseFloat('3.14')).toEqual(3.14);
+      });
+      
+      it('parses scientific notation', function() {
+         expect(parseFloat('314e-2')).toEqual(3.14);     
+      });
+      
+      it('parses up to non-digit chars', function() {
+         expect(parseFloat('3.15xxxyyy')).toEqual(3.15);
+      });
+      
+      it('non-digits give NaN result', function() {
+         expect(isNaN(parseFloat('ABC'))).toBe(true);
+      });
        
        
    });
